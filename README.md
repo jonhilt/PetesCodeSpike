@@ -9,3 +9,5 @@ Here's the SQL code executed for the query...
       ORDER BY [g].[message_id] DESC
 
 ```
+
+This uses LocalDB and seeds some data as part of the configuration in `ApplicationDbContext`
