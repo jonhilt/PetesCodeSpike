@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -62,33 +61,6 @@ namespace PeteTest
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
-        }
-    }
-
-    public class ApplicationDbContext : DbContext
-    {
-        public DbSet<GEMMessage> GEMMessages { get; set; }
-
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-            
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder
-                .Entity<GEMMessage>()
-                .HasKey(x => x.message_id);
-
-            modelBuilder
-                .Entity<GEMMessage>()
-                .HasData(Enumerable.Range(1, 500).Select(x => new GEMMessage
-                {
-                    last_contact = DateTime.Now.AddMinutes(x * -1),
-                    message_id = x
-                }));
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 
